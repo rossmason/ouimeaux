@@ -36,6 +36,12 @@ class Maker(Device):
         Turn this device on. If already on, will return "Error".
         """
         return self.set_state(1)
+    
+    def toggle(self):
+        """
+        Toggle the switch's state.
+        """
+        return self.set_state(not self.get_state())
 
     @property
     def maker_attribs(self):
