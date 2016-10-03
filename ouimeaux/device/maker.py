@@ -42,6 +42,13 @@ class Maker(Device):
         Toggle the switch's state.
         """
         return self.set_state(not self.get_state())
+    
+    def blink(self, delay=1):
+        """
+        Toggle the switch once, then again after a delay (in seconds).
+        """
+        self.toggle()
+        gevent.spawn_later(delay, self.toggle)
 
     @property
     def maker_attribs(self):
