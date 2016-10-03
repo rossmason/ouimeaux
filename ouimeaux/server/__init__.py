@@ -110,8 +110,8 @@ class DeviceResource(Resource):
 
     def post(self, name):
         dev = get_device(name)
-        if not isinstance(dev, Switch):
-            abort(405, error='Only switches can have their state changed')
+       # if not isinstance(dev, Switch):
+       #     abort(405, error='Only switches can have their state changed')
         action = (request.json or {}).get('state', (
             request.values or {}).get('state', 'toggle'))
         if action not in ('on', 'off', 'toggle', 'blink'):
